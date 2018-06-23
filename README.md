@@ -1,30 +1,40 @@
-# return-to-libc
-ataque return to libc
+# Ataque return-to-libc
+
 Requerimientos:
-1.- Software de virtualizacion 
+
+1.- Software de virtualizacion
+
 2.- Maquina virtual 
 
+
+
 Pasos para hacer el Ataque:
+
 1.- Arrancar el OS
+
       login: root
       password: root
       
 2.- Crear un usuario
+
       # useradd -m -G root yeroen
       # passwd yeroen
               *deberas ingresar una contraseña*
       # exit
       
 3.- Ingresar como usuario
+
       login: yeroen
       password: *contraseña ingresada*
       
 4.- Tener los 3 documentos
+
       retlib.c
       getenv.c
       exploit.c
       
 5.- Desactivamos la aleatorizacion de espacios de memoria como root
+
       $ su root
         password: root
       # sysctl -w kernel.randomize_va_space=0
@@ -54,9 +64,11 @@ Pasos para hacer el Ataque:
             Quit anyway? (y or n) y
             
 7.- Modificar el archivo exploit.c con las direcciones obtenidas
+
       $ nano exploit.c
       
 8.- Conpilar y Ejecutar el archivo exploit.c
+
       $ gcc -o exploit exploit.c
       $ ./exploit
             *crea badfile*
